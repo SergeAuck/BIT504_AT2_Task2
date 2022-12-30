@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import javax.swing.JFrame;
 
 
 public class GameMain extends JPanel implements MouseListener{
@@ -35,11 +35,15 @@ public class GameMain extends JPanel implements MouseListener{
 	// for displaying game status message
 	private JLabel statusBar;       
 	
+	
+	private Board something; //???????????????
 
 	/** Constructor to setup the UI and game components on the panel */
 	public GameMain() {   
 		
 		// TODO: This JPanel fires a MouseEvent on MouseClicked so add required event listener to 'this'.          
+	    addMouseListener(this);
+	    //this.addMouseListener(null); //change null?
 	    
 	    
 		// Setup the status bar (JLabel) to display status message       
@@ -57,9 +61,12 @@ public class GameMain extends JPanel implements MouseListener{
 		
 		
 		// TODO: Create a new instance of the game "Board"class. HINT check the variables above for the correct name
+		board = new Board();  //Should it be 
 
 		
 		//TODO: call the method to initialise the game board
+		initGame();	
+		
 
 	}
 	
@@ -71,11 +78,11 @@ public class GameMain extends JPanel implements MouseListener{
 				JFrame frame = new JFrame(TITLE);
 				
 				//TODO: create the new GameMain panel and add it to the frame
-						
 				
+				frame.add(new GameMain());
 				
 				//TODO: set the default close operation of the frame to exit_on_close
-		            
+				frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);   //find more info on Window constants
 				
 				frame.pack();             
 				frame.setLocationRelativeTo(null);
