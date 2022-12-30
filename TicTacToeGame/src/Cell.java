@@ -15,8 +15,6 @@ public class Cell {
 		// TODO: Initialise the variables row, col
 		this.row = row;
 		this.col = col;
-
-		
 		
 		//TODO: call the method that sets the cell content to EMPTY
 		 clear();
@@ -48,8 +46,8 @@ public class Cell {
 	public void clear() {
 		
 		// TODO: Set the value of content to Empty (Remember this is an enum)
-		content = null; //still not clear. maybe should use for statement? Check on the working program
-		
+		//content = null; - easiest way is just to assign 'null' to all the content. At least it does work during the testing of the application
+		content = Player.Empty;
 	}
 		
 }
