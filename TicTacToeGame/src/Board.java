@@ -13,6 +13,7 @@ public class Board {
 	public Board() {
 		
 	 //TODO: initialise the cells array using ROWS and COLS constants 
+		//calling cariables from gamemain class
 		cells = new Cell[GameMain.ROWS] [GameMain.COLS];
 
 		
@@ -30,10 +31,17 @@ public class Board {
 		// TODO: Check whether the game has ended in a draw. 
 		// Hint: Use a nested loop (see the constructor for an example). Check whether any of the cells content in the board grid are Player.Empty. If they are, it is not a draw.
 		// Hint: Return false if it is not a draw, return true if there are no empty positions left
-		   return false;
-		
-
-		
+			//if there are still cells that belongs to the Empty player - game should continue - false
+			//checking every cell in array isung for loop
+			for (int row = 0; row < GameMain.ROWS; ++row) {
+				for (int col = 0; col < GameMain.COLS; ++col) {
+					if (cells[row][col].content == Player.Empty) {
+						return false;
+					}
+				}
+			} 
+			//in case of no cells left under Empty player - its a draw - true
+		    return true;
 	}
 	
 	/** Return true if the current player "thePlayer" has won after making their move  */
@@ -43,8 +51,10 @@ public class Board {
 			return true; 
 		
 		 // TODO: Check if the player has 3 in the playerCol.
-		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
-		
+		 // Hint: Use the row code above as a starting point, remember that it goes cells[row][column]
+		 //same principle as in 3-in-row check. But this time we are changing manually rows not columns
+		if(cells[0][playerCol].content == thePlayer && cells[1][playerCol].content == thePlayer && cells[2][playerCol].content == thePlayer )
+			return true;
 		
 		
 		 // 3-in-the-diagonal
@@ -53,7 +63,9 @@ public class Board {
 		 
 		
 		// TODO: Check the diagonal in the other direction
-		
+		//same principle as 3-in-the-diagonal
+		if( cells[0][2].content == thePlayer && cells[1][1].content == thePlayer && cells[2][0].content == thePlayer)
+			return true;
 
 		
 		//no winner, keep playing
